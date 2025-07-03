@@ -1,0 +1,237 @@
+// Estilos específicos para móviles (hasta 576px)
+
+// Ajustes generales para móviles
+@include mobile {
+  // Tipografía
+  h1 { font-size: $font-size-3xl; }
+  h2 { font-size: $font-size-2xl; }
+  h3 { font-size: $font-size-xl; }
+  
+  // Espaciado reducido
+  .container {
+    padding: 0 $spacing-sm;
+  }
+  
+  // Secciones con menos padding
+  .hero,
+  .services,
+  .projects,
+  .about,
+  .contact {
+    padding: $spacing-xl 0;
+  }
+  
+  // Hero section ajustado
+  .hero {
+    min-height: 80vh;
+    
+    &__title {
+      font-size: $font-size-3xl;
+      line-height: 1.3;
+    }
+    
+    &__subtitle {
+      font-size: $font-size-base;
+    }
+    
+    &__actions {
+      flex-direction: column;
+      gap: $spacing-sm;
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+  
+  // Navegación móvil
+  .navbar {
+    &__menu {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: $white;
+      box-shadow: $shadow-lg;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all $transition-base;
+      max-height: calc(100vh - 100%);
+      overflow-y: auto;
+      
+      &--open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    
+    &__toggle {
+      display: flex;
+    }
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    padding: $spacing-md 0;
+    
+    &__link {
+      padding: $spacing-md $spacing-lg;
+      border-bottom: 1px solid $gray-100;
+      text-align: left;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  // Grids responsivos
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+  
+  // Cards ajustadas
+  .service-card,
+  .project-card {
+    margin-bottom: $spacing-md;
+  }
+  
+  // Sección about
+  .about {
+    &__content {
+      flex-direction: column;
+      gap: $spacing-xl;
+      text-align: center;
+    }
+    
+    &__stats {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+  
+  // Sección contacto
+  .contact {
+    &__content {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+    
+    &__item {
+      flex-direction: column;
+      text-align: center;
+      gap: $spacing-md;
+    }
+  }
+  
+  // Footer
+  .footer {
+    &__content {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+    
+    &__bottom {
+      flex-direction: column;
+      gap: $spacing-md;
+      text-align: center;
+    }
+  }
+  
+  // Formularios
+  .form-group--inline {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+  }
+  
+  // Botones
+  .btn {
+    &--large {
+      padding: $spacing-md $spacing-lg;
+      font-size: $font-size-base;
+    }
+  }
+  
+  // Utilidades móviles
+  .mobile\:hidden {
+    display: none !important;
+  }
+  
+  .mobile\:block {
+    display: block !important;
+  }
+  
+  .mobile\:text-center {
+    text-align: center !important;
+  }
+  
+  .mobile\:text-left {
+    text-align: left !important;
+  }
+  
+  .mobile\:text-right {
+    text-align: right !important;
+  }
+  
+  .mobile\:flex-column {
+    flex-direction: column !important;
+  }
+  
+  .mobile\:w-full {
+    width: 100% !important;
+  }
+  
+  .mobile\:p-0 {
+    padding: 0 !important;
+  }
+  
+  .mobile\:m-0 {
+    margin: 0 !important;
+  }
+  
+  // Animaciones optimizadas para móviles
+  .animate-fade-in,
+  .animate-slide-left,
+  .animate-slide-right {
+    animation-duration: 0.4s;
+  }
+  
+  // Optimizaciones de rendimiento
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  // Mejoras de accesibilidad táctil
+  .btn,
+  .nav-list__link,
+  .social-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  // Scroll suave optimizado
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  // Prevención de zoom en inputs
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+} 

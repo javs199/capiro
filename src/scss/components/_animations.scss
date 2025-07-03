@@ -1,0 +1,439 @@
+// Animaciones para el diseño Blueprint de Capiro Corp
+
+// ===== ANIMACIONES DE ENTRADA =====
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ===== CLASES DE ANIMACIÓN =====
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-in--left {
+  animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.animate-in--right {
+  animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.animate-in--scale {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+// ===== ANIMACIONES PARA TIMELINE =====
+.service-step {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+  
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &:nth-child(even) {
+    transform: translateY(50px) translateX(30px);
+    
+    &.service-step--visible {
+      transform: translateY(0) translateX(0);
+    }
+  }
+}
+
+// ===== ANIMACIONES PARA TARJETAS =====
+.project-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease-out;
+  
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba($blueprint-accent, 0.2);
+  }
+}
+
+// ===== ANIMACIONES PARA VENTAJAS =====
+.advantage-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease-out;
+  
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+// ===== ANIMACIONES PARA CONTADORES =====
+.stat {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease-out;
+  
+  &.animate-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  &__number {
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+}
+
+// ===== ANIMACIONES PARA BOTONES =====
+.btn {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($white, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+// ===== ANIMACIONES PARA EL HEADER =====
+.header {
+  transition: all 0.3s ease;
+  
+  &--scrolled {
+    transform: translateY(0);
+  }
+}
+
+// ===== ANIMACIONES PARA EL MENÚ MOBILE =====
+.menu-toggle {
+  transition: all 0.3s ease;
+  
+  &--active {
+    .menu-toggle__line {
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+  
+  &__line {
+    transition: all 0.3s ease;
+  }
+}
+
+.nav-menu {
+  transition: all 0.3s ease;
+  
+  &--active {
+    transform: translateX(0);
+  }
+}
+
+// ===== ANIMACIONES PARA EL HERO =====
+.hero {
+  &__title {
+    animation: fadeInUp 1s ease-out 0.3s both;
+  }
+  
+  &__subtitle {
+    animation: fadeInUp 1s ease-out 0.6s both;
+  }
+  
+  &__actions {
+    animation: fadeInUp 1s ease-out 0.9s both;
+  }
+  
+  &__scroll-indicator {
+    animation: fadeInUp 1s ease-out 1.2s both;
+  }
+}
+
+// ===== ANIMACIONES PARA EL GRID BLUEPRINT =====
+.hero__blueprint-grid {
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+// ===== ANIMACIONES PARA NOTIFICACIONES =====
+.notification {
+  animation: slideInRight 0.3s ease-out;
+  
+  &--success {
+    border-left: 4px solid $accent-color;
+  }
+  
+  &--error {
+    border-left: 4px solid $warning-color;
+  }
+  
+  &--info {
+    border-left: 4px solid $blueprint-accent;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// ===== ANIMACIONES PARA LOADER =====
+.loader {
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba($white, 0.3);
+    border-top: 3px solid $blueprint-accent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ===== ANIMACIONES PARA ICONOS =====
+.service-step__icon,
+.advantage-item__icon {
+  svg {
+    transition: all 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+// ===== ANIMACIONES PARA ENLACES =====
+.nav-menu__link {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $blueprint-accent;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  &:hover::after,
+  &--active::after {
+    width: 100%;
+  }
+}
+
+// ===== ANIMACIONES PARA FORMULARIOS =====
+.form-group {
+  input,
+  textarea,
+  select {
+    transition: all 0.3s ease;
+    
+    &:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($blueprint-accent, 0.15);
+    }
+  }
+}
+
+// ===== ANIMACIONES PARA SCROLL SUAVE =====
+html {
+  scroll-behavior: smooth;
+}
+
+// ===== ANIMACIONES PARA ELEMENTOS CON RETRASO =====
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+// ===== ANIMACIONES PARA HOVER EFFECTS =====
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba($blueprint-accent, 0.2);
+  }
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 0 20px rgba($blueprint-accent, 0.4);
+  }
+}
+
+// ===== ANIMACIONES PARA TEXTOS =====
+.text-reveal {
+  overflow: hidden;
+  
+  span {
+    display: inline-block;
+    animation: textReveal 0.8s ease-out forwards;
+  }
+}
+
+@keyframes textReveal {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// ===== ANIMACIONES PARA PARTÍCULAS BLUEPRINT =====
+.blueprint-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: $blueprint-accent;
+    border-radius: 50%;
+    animation: particleFloat 6s infinite linear;
+  }
+  
+  &::before {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  &::after {
+    top: 60%;
+    right: 15%;
+    animation-delay: 3s;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-100px) scale(1);
+  }
+  100% {
+    transform: translateY(-200px) scale(0);
+    opacity: 0;
+  }
+}
+
+// ===== ANIMACIONES PARA RESPONSIVE =====
+@include mobile {
+  .animate-in {
+    animation-duration: 0.4s;
+  }
+  
+  .service-step {
+    transition-duration: 0.4s;
+  }
+}
+
+@include tablet {
+  .animate-in {
+    animation-duration: 0.5s;
+  }
+} 

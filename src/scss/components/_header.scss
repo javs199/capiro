@@ -1,0 +1,219 @@
+// Header principal - Blueprint Style
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($blueprint-bg, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($blueprint-accent, 0.3);
+  z-index: $z-sticky;
+  transition: all $transition-base;
+  
+  &--scrolled {
+    background-color: rgba($blueprint-bg, 0.98);
+    box-shadow: $shadow-sm;
+  }
+  
+  &--transparent {
+    background-color: transparent;
+    border-bottom: none;
+    
+    .navbar__link {
+      color: $white;
+      
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+    
+    .logo__text {
+      color: $white;
+    }
+  }
+}
+
+// Navegación
+.navbar {
+  @include flex-between;
+  padding: $spacing-sm 0;
+  
+  &__brand {
+    .logo {
+      @include flex-center;
+      gap: $spacing-sm;
+      text-decoration: none;
+      
+      &__image {
+        width: 40px;
+        height: 40px;
+        border-radius: $border-radius-sm;
+      }
+      
+      &__text {
+        font-family: $font-family-heading;
+        font-size: $font-size-xl;
+        font-weight: 700;
+        color: $blueprint-accent;
+        transition: color $transition-fast;
+      }
+    }
+  }
+  
+  &__menu {
+    @include mobile {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: $white;
+      box-shadow: $shadow-lg;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all $transition-base;
+      
+      &--open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: $spacing-xs;
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    @include mobile {
+      display: flex;
+    }
+    
+    &-line {
+      width: 24px;
+      height: 2px;
+      background-color: $primary-color;
+      transition: all $transition-fast;
+    }
+    
+    &--active {
+      .navbar__toggle-line {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+      }
+    }
+  }
+}
+
+// Lista de navegación
+.nav-list {
+  @include flex-center;
+  gap: $spacing-lg;
+  
+  @include mobile {
+    flex-direction: column;
+    gap: 0;
+    padding: $spacing-md 0;
+  }
+  
+  &__item {
+    position: relative;
+  }
+  
+  &__link {
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    font-family: $font-family-primary;
+    font-weight: 500;
+    color: $white;
+    text-decoration: none;
+    transition: all $transition-fast;
+    position: relative;
+    
+    @include mobile {
+      padding: $spacing-md $spacing-lg;
+      border-bottom: 1px solid rgba($blueprint-accent, 0.2);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $blueprint-accent;
+      transition: all $transition-fast;
+      transform: translateX(-50%);
+    }
+    
+    &:hover,
+    &--active {
+      color: $blueprint-accent;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+    
+    &--active {
+      font-weight: 600;
+    }
+  }
+}
+
+// Dropdown (para futuras expansiones)
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $white;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all $transition-base;
+  
+  &--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  &__item {
+    border-bottom: 1px solid $gray-100;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  &__link {
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    color: $gray-700;
+    text-decoration: none;
+    transition: background-color $transition-fast;
+    
+    &:hover {
+      background-color: $gray-50;
+      color: $primary-color;
+    }
+  }
+} 

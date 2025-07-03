@@ -1,0 +1,227 @@
+// Grupos de formulario
+.form-group {
+  margin-bottom: $spacing-md;
+  
+  &--inline {
+    display: flex;
+    gap: $spacing-md;
+    
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+  }
+  
+  &--required {
+    .form-label::after {
+      content: ' *';
+      color: $warning-color;
+    }
+  }
+}
+
+// Labels
+.form-label {
+  display: block;
+  font-weight: 500;
+  color: $gray-700;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+}
+
+// Controles de formulario
+.form-control {
+  width: 100%;
+  padding: $spacing-md;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  transition: all $transition-fast;
+  background-color: $white;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+  
+  &--error {
+    border-color: $warning-color;
+    
+    &:focus {
+      border-color: $warning-color;
+      box-shadow: 0 0 0 3px rgba($warning-color, 0.1);
+    }
+  }
+  
+  &--success {
+    border-color: $accent-color;
+    
+    &:focus {
+      border-color: $accent-color;
+      box-shadow: 0 0 0 3px rgba($accent-color, 0.1);
+    }
+  }
+  
+  &--large {
+    padding: $spacing-lg;
+    font-size: $font-size-lg;
+  }
+  
+  &--small {
+    padding: $spacing-sm;
+    font-size: $font-size-sm;
+  }
+  
+  &::placeholder {
+    color: $gray-500;
+  }
+  
+  &:disabled {
+    background-color: $gray-100;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// Textarea
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+  
+  &--large {
+    min-height: 200px;
+  }
+}
+
+// Select
+select.form-control {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right $spacing-sm center;
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+  padding-right: $spacing-xl;
+  appearance: none;
+}
+
+// Checkbox y Radio
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-sm;
+  
+  &__input {
+    width: 18px;
+    height: 18px;
+    accent-color: $primary-color;
+    cursor: pointer;
+  }
+  
+  &__label {
+    font-size: $font-size-sm;
+    color: $gray-700;
+    cursor: pointer;
+  }
+  
+  &--inline {
+    display: inline-flex;
+    margin-right: $spacing-lg;
+  }
+}
+
+// Mensajes de validación
+.form-message {
+  font-size: $font-size-sm;
+  margin-top: $spacing-xs;
+  
+  &--error {
+    color: $warning-color;
+  }
+  
+  &--success {
+    color: $accent-color;
+  }
+  
+  &--info {
+    color: $gray-600;
+  }
+}
+
+// Estados de carga
+.form-control--loading {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 4v5h.582m15.356 2A8.001 8.001 0 0 0 4.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 0 1-15.357-2m15.357 2H15'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right $spacing-sm center;
+  background-size: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Formularios especializados
+.form-search {
+  position: relative;
+  
+  .form-control {
+    padding-right: 50px;
+  }
+  
+  .btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: $spacing-sm;
+    border-radius: $border-radius-sm;
+  }
+}
+
+.form-inline {
+  display: flex;
+  gap: $spacing-sm;
+  
+  @include mobile {
+    flex-direction: column;
+  }
+  
+  .form-control {
+    flex: 1;
+  }
+}
+
+// Validación en tiempo real
+.form-control:valid {
+  border-color: $accent-color;
+}
+
+.form-control:invalid:not(:placeholder-shown) {
+  border-color: $warning-color;
+}
+
+// Autocompletado
+.form-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px $white inset !important;
+  -webkit-text-fill-color: $gray-900 !important;
+}
+
+// Formularios responsivos
+.form-responsive {
+  @include mobile {
+    .form-group--inline {
+      flex-direction: column;
+    }
+    
+    .form-inline {
+      flex-direction: column;
+    }
+  }
+} 

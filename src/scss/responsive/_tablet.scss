@@ -1,0 +1,38 @@
+// Estilos específicos para tablets (768px - 991px)
+
+@include tablet {
+  // Ajustes generales para tablets
+  .container {
+    padding: 0 $spacing-md;
+  }
+  
+  // Grids para tablets
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+  }
+  
+  // Footer para tablets
+  .footer__content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+  }
+  
+  // Utilidades para tablets
+  .tablet\:hidden {
+    display: none !important;
+  }
+  
+  .tablet\:block {
+    display: block !important;
+  }
+  
+  .tablet\:grid--2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .tablet\:grid--3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+} 

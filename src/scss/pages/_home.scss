@@ -1,0 +1,574 @@
+// Hero Section - Blueprint Style
+.hero {
+  position: relative;
+  min-height: 100vh;
+  @include flex-center;
+  overflow: hidden;
+  background-color: $blueprint-bg;
+  
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba($blueprint-bg, 0.9) 0%, rgba($black, 0.7) 100%);
+    }
+  }
+  
+  &__blueprint-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba($blueprint-lines, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($blueprint-lines, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: $white;
+    max-width: 800px;
+    padding: 0 $spacing-md;
+    
+    @include mobile {
+      padding-top: 80px;
+    }
+  }
+  
+  &__title {
+    @include heading-1;
+    margin-bottom: $spacing-lg;
+    color: $white;
+    
+    &--highlight {
+      color: $blueprint-accent;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $blueprint-accent;
+        border-radius: 2px;
+      }
+    }
+  }
+  
+  &__subtitle {
+    font-size: $font-size-xl;
+    line-height: 1.6;
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+    
+    @include mobile {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  &__actions {
+    @include flex-center;
+    gap: $spacing-md;
+    
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+  }
+  
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $spacing-lg;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: $white;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+    
+    &-text {
+      display: block;
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-xs;
+    }
+    
+    &-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid $white;
+      border-bottom: 2px solid $white;
+      transform: rotate(45deg);
+      margin: 0 auto;
+    }
+  }
+}
+
+// Sección de servicios - Timeline Blueprint
+.services {
+  @include section-padding;
+  background-color: $light-gray;
+  
+  &-timeline {
+    position: relative;
+    margin-top: $spacing-3xl;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, $blueprint-accent, transparent);
+      transform: translateX(-50%);
+      
+      @include mobile {
+        left: 20px;
+        transform: none;
+      }
+    }
+  }
+}
+
+.service-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-2xl;
+  
+  @include mobile {
+    flex-direction: column;
+    text-align: center;
+    margin-left: 40px;
+  }
+  
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+  
+  &__number {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: $blueprint-accent;
+    color: $white;
+    border-radius: 50%;
+    @include flex-center;
+    font-size: $font-size-lg;
+    font-weight: 700;
+    z-index: 2;
+    
+    @include mobile {
+      left: -30px;
+      top: 0;
+      transform: none;
+    }
+  }
+  
+  &__icon {
+    width: 120px;
+    height: 120px;
+    background: $white;
+    border: 3px solid $blueprint-accent;
+    border-radius: 50%;
+    @include flex-center;
+    color: $blueprint-accent;
+    margin: 0 $spacing-xl;
+    box-shadow: $shadow-lg;
+    
+    @include mobile {
+      width: 80px;
+      height: 80px;
+      margin: $spacing-md 0;
+    }
+  }
+  
+  &__content {
+    flex: 1;
+    max-width: 400px;
+    
+    @include mobile {
+      max-width: none;
+    }
+  }
+  
+  &__title {
+    @include heading-3;
+    margin-bottom: $spacing-md;
+    color: $gray-800;
+  }
+  
+  &__description {
+    @include body-text;
+    color: $gray-600;
+  }
+}
+
+// Sección de proyectos
+.projects {
+  @include section-padding;
+  
+  &-grid {
+    @include grid(3, $spacing-xl);
+    margin-top: $spacing-2xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+    
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &__cta {
+    text-align: center;
+    margin-top: $spacing-3xl;
+  }
+}
+
+.project-card {
+  @include card-base;
+  overflow: hidden;
+  border: 2px solid $blueprint-accent;
+  
+  &__image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    
+    .project-card__category {
+      background-color: $blueprint-accent;
+      color: $white;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-sm;
+      font-size: $font-size-sm;
+      font-weight: 500;
+    }
+  }
+  
+  &__content {
+    padding: $spacing-lg;
+  }
+  
+  &__title {
+    @include heading-3;
+    margin-bottom: $spacing-sm;
+    color: $gray-800;
+  }
+  
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $blueprint-accent;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    margin-bottom: $spacing-sm;
+    
+    svg {
+      color: $blueprint-accent;
+    }
+  }
+  
+  &__description {
+    @include body-text;
+    margin-bottom: $spacing-md;
+    color: $gray-600;
+  }
+  
+  &__details {
+    @include flex-between;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    
+    .project-card__detail {
+      background-color: $light-gray;
+      color: $gray-700;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-sm;
+      font-size: $font-size-sm;
+      font-weight: 500;
+    }
+  }
+  
+  &:hover {
+    .project-card__image img {
+      transform: scale(1.1);
+    }
+    
+    border-color: darken($blueprint-accent, 10%);
+  }
+}
+
+// Ventajas Competitivas
+.advantages {
+  @include section-padding;
+  background-color: $blueprint-bg;
+  color: $white;
+  
+  .section-header {
+    &__title,
+    &__subtitle {
+      color: $white;
+    }
+  }
+  
+  &-grid {
+    @include grid(3, $spacing-xl);
+    margin-top: $spacing-2xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+    
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.advantage-item {
+  text-align: center;
+  padding: $spacing-xl;
+  background: rgba($white, 0.05);
+  border: 1px solid rgba($blueprint-accent, 0.2);
+  border-radius: $border-radius-lg;
+  transition: all $transition-base;
+  
+  &:hover {
+    background: rgba($white, 0.1);
+    border-color: $blueprint-accent;
+    transform: translateY(-5px);
+  }
+  
+  &__icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto $spacing-lg;
+    background: $blueprint-accent;
+    border-radius: 50%;
+    @include flex-center;
+    color: $white;
+  }
+  
+  &__title {
+    @include heading-3;
+    margin-bottom: $spacing-md;
+    color: $white;
+  }
+  
+  &__description {
+    @include body-text;
+    color: rgba($white, 0.8);
+  }
+}
+
+// Sección sobre nosotros
+.about {
+  @include section-padding;
+  background-color: $gray-50;
+  
+  &__content {
+    @include flex-between;
+    gap: $spacing-3xl;
+    align-items: center;
+    
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-xl;
+      text-align: center;
+    }
+  }
+  
+  &__text {
+    flex: 1;
+  }
+  
+  &__title {
+    @include heading-2;
+    margin-bottom: $spacing-lg;
+    color: $gray-900;
+  }
+  
+  &__description {
+    @include body-text;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-xl;
+    color: $gray-600;
+  }
+  
+  &__stats {
+    @include flex-between;
+    gap: $spacing-lg;
+    
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+  
+  &__image {
+    flex: 1;
+    
+    img {
+      width: 100%;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-lg;
+    }
+  }
+}
+
+.stat {
+  text-align: center;
+  
+  &__number {
+    display: block;
+    font-size: $font-size-4xl;
+    font-weight: 700;
+    color: $primary-color;
+    line-height: 1;
+  }
+  
+  &__label {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    font-weight: 500;
+  }
+}
+
+// Sección de contacto
+.contact {
+  @include section-padding;
+  
+  &__content {
+    @include grid(2, $spacing-3xl);
+    margin-top: $spacing-2xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+  
+  &__info {
+    @include flex-column;
+    gap: $spacing-lg;
+  }
+  
+  &__item {
+    @include flex-center;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    background-color: $gray-50;
+    border-radius: $border-radius-lg;
+    
+    @include mobile {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  
+  &__icon {
+    width: 60px;
+    height: 60px;
+    background-color: $primary-color;
+    border-radius: 50%;
+    @include flex-center;
+    color: $white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  &__details {
+    flex: 1;
+  }
+  
+  &__label {
+    font-size: $font-size-sm;
+    color: $gray-500;
+    margin-bottom: $spacing-xs;
+  }
+  
+  &__value {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $gray-900;
+  }
+  
+  &__form {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+}
+
+// Encabezados de sección
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  
+  &__title {
+    @include heading-2;
+    margin-bottom: $spacing-md;
+    color: $gray-900;
+  }
+  
+  &__subtitle {
+    @include body-text;
+    font-size: $font-size-lg;
+    color: $gray-600;
+  }
+}
+
+// Animaciones
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+} 

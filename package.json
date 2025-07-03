@@ -1,0 +1,43 @@
+{
+  "name": "capiro-corp-website",
+  "version": "1.0.0",
+  "description": "Sitio web corporativo de Capiro Corp",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server public --port=3000",
+    "build": "npm run build:css && npm run build:js && npm run optimize:images",
+    "build:css": "sass src/scss:public/css --style compressed",
+    "build:js": "webpack --mode production",
+    "watch": "sass src/scss:public/css --watch",
+    "optimize:images": "imagemin src/img/* --out-dir=public/img",
+    "clean": "rimraf public/css public/js public/img",
+    "serve": "live-server public --port=3000"
+  },
+  "keywords": [
+    "capiro",
+    "corp",
+    "website",
+    "construction",
+    "engineering"
+  ],
+  "author": "Capiro Corp",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.69.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "imagemin": "^8.0.1",
+    "imagemin-cli": "^7.0.0",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capiro-corp/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/capiro-corp/website/issues"
+  },
+  "homepage": "https://capiro-corp.com"
+} 

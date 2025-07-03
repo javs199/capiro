@@ -1,0 +1,43 @@
+// Estilos específicos para desktop (992px+)
+
+@include desktop {
+  // Ajustes generales para desktop
+  .container {
+    max-width: 1200px;
+  }
+  
+  // Grids para desktop
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-xl;
+  }
+  
+  // Footer para desktop
+  .footer__content {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-xl;
+  }
+  
+  // Utilidades para desktop
+  .desktop\:hidden {
+    display: none !important;
+  }
+  
+  .desktop\:block {
+    display: block !important;
+  }
+  
+  .desktop\:grid--4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  // Hover effects solo en desktop
+  .hover\:scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover\:shadow-lg:hover {
+    box-shadow: $shadow-lg;
+  }
+} 

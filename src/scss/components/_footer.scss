@@ -1,0 +1,104 @@
+// Footer principal - Blueprint Style
+.footer {
+  background-color: $blueprint-bg;
+  color: $white;
+  padding: $spacing-3xl 0 $spacing-lg;
+  
+  &__content {
+    @include grid(4, $spacing-xl);
+    margin-bottom: $spacing-2xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+    
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &__brand {
+    .footer__logo {
+      width: 60px;
+      height: 60px;
+      border-radius: $border-radius-sm;
+      margin-bottom: $spacing-md;
+    }
+    
+    .footer__description {
+      color: $gray-400;
+      line-height: 1.6;
+    }
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    margin-bottom: $spacing-lg;
+    color: $white;
+  }
+  
+  &__list {
+    li {
+      margin-bottom: $spacing-sm;
+      
+      a {
+        color: $gray-400;
+        text-decoration: none;
+        transition: color $transition-fast;
+        
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+  
+  &__bottom {
+    @include flex-between;
+    padding-top: $spacing-lg;
+    border-top: 1px solid rgba($blueprint-accent, 0.3);
+    
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-md;
+      text-align: center;
+    }
+  }
+  
+  &__copyright {
+    color: $gray-500;
+    font-size: $font-size-sm;
+  }
+  
+  &__social {
+    @include flex-center;
+    gap: $spacing-md;
+  }
+}
+
+// Enlaces sociales - Blueprint Style
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba($blueprint-accent, 0.2);
+  color: $blueprint-accent;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all $transition-fast;
+  
+  &:hover {
+    background-color: $blueprint-accent;
+    color: $white;
+    transform: translateY(-2px);
+  }
+  
+  i {
+    font-size: 1.2rem;
+  }
+} 

@@ -1,0 +1,35 @@
+// Variables y configuración
+@import 'variables';
+@import 'mixins';
+
+// Reset y base
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/utilities';
+
+// Componentes
+@import 'components/header';
+@import 'components/navigation';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/footer';
+@import 'components/animations';
+
+// Layouts
+@import 'layouts/grid';
+@import 'layouts/header';
+@import 'layouts/main';
+@import 'layouts/footer';
+
+// Páginas
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/services';
+@import 'pages/projects';
+@import 'pages/contact';
+
+// Responsive
+@import 'responsive/mobile';
+@import 'responsive/tablet';
+@import 'responsive/desktop'; 
